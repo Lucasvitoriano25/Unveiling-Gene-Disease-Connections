@@ -39,6 +39,26 @@ This dataset (`DG-AssocMiner_miner-disease-gene`, 818KB) represents a disease-ge
 
 This collection provides a comprehensive framework for our study. The disease datasets, with their rich descriptive and classificatory information, combined with the gene datasets' extensive coverage of gene attributes, offer an opportunity to explore and predict gene-disease relationships.
 
+## Modeling as a Knowledge Graph
+
+We've transformed the Stanford Biomedical Network Dataset Collection into a Knowledge Graph (KG) using the Web Ontology Language (OWL). This setup provides a semantic framework to map entities and relationships in the biomedical field, enhancing our ability to analyze and infer data. Key components include:
+
+### Defining Classes
+The KG structure is based on two main classes:
+- **Disease**: Stores information on individual diseases such as names, classifications, and symptoms.
+- **Gene**: Represents genes with details on their functions and chromosomal locations.
+
+### Specifying Properties
+Properties help define class attributes and the relationships between them, including:
+- **Datatype Properties**: Describe disease and gene attributes such as risk factors and gene family.
+- **Object Property**: `isAssociatedWith` links genes directly to diseases, crucial for analyzing their associations.
+
+### Instantiating Individuals
+We populate the KG by creating instances of diseases and genes, assigning relevant properties, and establishing relationships. The focus is on using these relationships to perform **Knowledge Graph Completion**, aiming to predict missing links between genes and diseases:
+
+<p align="center">
+  <img src="https://github.com/Lucasvitoriano25/Unveiling-Gene-Disease-Connections/assets/52925699/1d0770f4-9905-4ed1-ace9-a05ed093bcc5" alt="Graph" height="800px" />
+</p>
 
 
 ### References
