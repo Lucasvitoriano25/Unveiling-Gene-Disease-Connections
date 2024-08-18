@@ -145,6 +145,27 @@ The training pipeline begins with the extraction and enhancement of disease and 
 
 After preprocessing, the enriched data feeds into a Graph Neural Network (GNN), which models the complex relationships between genes and diseases as a network of nodes (representing genes and diseases) and edges (representing their associations). Although not originally designed for biological data, the GNN effectively adapts to such datasets, leveraging its capacity to learn from the graph structure. This capability allows the GNN to perform deep learning-based predictions of potential links, known as link prediction. This process not only predicts new, plausible gene-disease associations but also enhances our understanding of the underlying biological processes, contributing to research in genomic medicine and personalized treatments.
 
+## Results
+Our study assessed the efficacy of three different Graph Neural Network (GNN) architectures—SAGEConv[4], GraphConv[5], and GATv2[6]—by evaluating their performance based on accuracy and F1 scores across various training and testing epochs. In our accuracy analysis, SAGEConv emerged as the most consistent performer, stabilizing around a 70% accuracy rate after initial fluctuations. In comparison, GraphConv showed similar performance trends, gradually aligning with SAGEConv's results as training progressed, while GATv2 demonstrated less stability with performance improvements that nonetheless remained below the 70% threshold.
+
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/82ad418d-da00-4e0c-903d-7eac268e03d1" alt="Pipeline" height="350px" />
+</p>
+
+The F1 score analysis further highlighted the strengths and weaknesses of each model. Both SAGEConv and GraphConv delivered comparable results, with SAGEConv slightly surpassing GraphConv, achieving close to a 0.7 F1 score. GATv2, on the other hand, struggled to match this level, indicating potential challenges in balancing precision and recall, as its F1 score consistently stayed under 0.7. These results are visually supported by the figure above, which plots the F1 score trajectories of the models over the course of the training epochs.
+
+Overall, SAGEConv maintained a marginal superiority in both accuracy and F1 scores throughout the study, suggesting it might be better suited for tasks involving gene-disease predictions. The comparative performance analysis revealed that while all models showed potential, the stability and higher scores of SAGEConv highlighted its suitability for this specific dataset and task. These findings underscore the importance of choosing the right GNN architecture based on the specific requirements and characteristics of the data being analyzed.
+
+## Limitations
+
+Despite the promising results, our study encompasses several limitations that must be acknowledged. Firstly, the quality of the predictions is highly contingent on the data’s accuracy and comprehensiveness. While the Stanford Biomedical Network Dataset Collection[1] is extensive, it may not capture the entire spectrum of gene-disease associations, especially for less studied or newly discovered diseases. Another limitation stems from the inherent complexity of biological networks. While GNNs are adept at modeling non-linear relationships, they may oversimplify complex biological phenomena that are influenced by a multitude of factors beyond the scope of the present dataset, such as environment and personal lifestyle, given that diseases are not solely determined by genetic predispositions.
+
+Furthermore, the interpretability of GNNs remains a challenge. Although our models can predict associations, understanding the underlying biological mechanisms that lead to these predictions is not straightforward. In practice, these models can suggest directions with a higher likelihood of success (better than a mere guess), but they still require the technical verification by professionals to confirm the existence of the predicted relationships. They can be utilized by these professionals to determine which relational studies to pursue.
+
+## Conclusion
+
+In conclusion, our exploration into the application of Graph Neural Networks for the prediction of gene-disease relationships in the created Knowledge Graph has demonstrated the viability and potential of GNNs in this domain. Our results show that the SAGEConv[4] model marginally outperforms the GraphConv[5] and GATv2[6] models in both accuracy and F1 score. While the SAGEConv model is preferred for further work in this area, the limitations outlined point to areas for improvement and future research. These include expanding the dataset and then the Knowledge Graph, enhancing model interpretability, and exploring a broader range of GNN architectures and configurations.
 
 ## References
 
@@ -159,13 +180,3 @@ After preprocessing, the enriched data feeds into a Graph Neural Network (GNN), 
 [5] Thomas N. Kipf and Max Welling. "Semi-Supervised Classification with Graph Convolutional Networks", February 2017. arXiv:1609.02907 [cs, stat].
 
 [6] Shaked Brody, Uri Alon, and Eran Yahav. "How Attentive are Graph Attention Networks?", January 2022. arXiv:2105.14491 [cs].
-
-
-
-
-## Results
-
-Our experimental setup evaluated three different Graph Neural Network (GNN) architectures: SAGEConv, GraphConv, and GATv2. The performance of each model was measured in terms of accuracy and F1 score across epochs during training and testing phases. 
-
-![Accuracy](https://github.com/Lucasvitoriano25/Unveiling-Gene-Disease-Connections/assets/52925699/d4fe99fd-a040-41ca-a988-5a9c38500846)
-![F1_score](https://github.com/Lucasvitoriano25/Unveiling-Gene-Disease-Connections/assets/52925699/59c3384b-1189-4ee9-ac26-44b5e070e805)
