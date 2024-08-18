@@ -69,6 +69,55 @@ Graph Neural Networks (GNNs) represent a cutting-edge class of deep learning mod
   <img src="https://github.com/user-attachments/assets/2a112039-d4a3-474d-b955-c907e90289f5" alt="GNN" height="350px" />
 </p>
 
+## Our Approach
+
+### Preprocessing
+
+The preprocessing stage involved refining the Stanford Biomedical Network Dataset Collection into a consistent and robust Knowledge Graph. This included:
+
+- **Disease Feature Standardization**: Aligning disease identifiers across datasets to ensure accurate disease matching.
+- **Disease Feature Augmentation**: Using OpenAI's GPT API to generate additional disease features. The prompt used was:
+
+```text
+The {disease} has the following definition: {definition}
+Based on your available knowledge and in the definition provided, give me information about {disease} only in JSON format on:
+{
+  "main symptom": "",
+  "risk factors": "",
+  "disease class": "",
+  "main system affected": ""
+}
+Go straight to the point: only list the important terms in the JSON format.
+```
+
+- **Gene Feature Enhancement**: Enhancing gene data by parsing chromosomal location details to aid in more detailed gene-disease analysis.
+
+The tables showcase the refinement of gene location information:
+
+<div align="center">
+
+| Feature          | Original Value | Refined Value |
+|------------------|----------------|---------------|
+| Start Chromosome | 5q14.2-q14.3   | 5             |
+| Start Arm        | 5q14.2-q14.3   | q             |
+| Start Loc        | 5q14.2-q14.3   | 14            |
+| Start SubLoc     | 5q14.2-q14.3   | 2             |
+| End Arm          | 5q14.2-q14.3   | q             |
+| End Loc          | 5q14.2-q14.3   | 14            |
+| End SubLoc       | 5q14.2-q14.3   | 3             |
+
+</div>
+
+
+
+### Implementation Details
+
+We experimented with various Graph Neural Network (GNN) architectures to identify the most effective model for predicting gene-disease relationships, including the exploration of BERT-based models for medical contexts. The process involved:
+
+- **Model Architecture Selection**: Testing different GNN models like **GATv2Conv**, **GCNConv**, and **SAGEConv** to evaluate their performance based on the characteristics of our dataset.
+- **Training Process Adaptation**: Establishing a flexible training loop to optimize the performance of various GNN models under varying conditions.
+- **Technical Stack**: Utilizing the PyTorch framework and PyTorch Geometric for implementing and testing the GNN models.
+
 
 
 
