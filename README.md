@@ -78,11 +78,7 @@ Graph Neural Networks (GNNs) represent a cutting-edge class of deep learning mod
 - Excluded diseases lacking comprehensive information on definitions, categories, and synonyms.
 
 #### Disease Feature Augmentation with LLMs
-- Utilized OpenAI's GPT API, specifically GPT 3.5 Turbo, to generate contextualized disease information.
-- Extracted additional features in JSON format focusing on main symptoms, risk factors, disease classes, and main systems affected.
-- Relied on existing definitions to guide the model for accuracy, minimizing data hallucination.
-
-The augmentation prompt was:
+We leveraged the capabilities of OpenAI's GPT 3.5 Turbo to generate contextualized information on diseases. This process allowed us to enrich our dataset by extracting additional features in JSON format, such as main symptoms, risk factors, disease classes, and main systems affected. By relying on existing definitions to guide the generation process, we aimed to ensure the accuracy of the information and minimize the risk of generating incorrect data. The augmentation prompt was:
 
 ```text
 The {disease} has the following definition: {definition}
@@ -93,15 +89,12 @@ Based on your available knowledge and in the definition provided, give me inform
   "disease class": "",
   "main system affected": ""
 }
-Go straight to the point: only list the important terms and don't talk too much.
+Go straight to the point: only list the important terms in the JSON format above.
 ```
 
 #### Gene Feature Enhancement: Key Topics
-- Addressed challenges in analyzing gene "location" features.
-- Applied regular expressions to dissect "location" information into granular components such as Start Chromosome, Start Chromosome Arm, and locational markers.
-- Enhanced data exploration enabled detailed analysis of gene distribution and potential disease associations.
 
-Gene Location Data Transformation:
+We addressed significant challenges in analyzing the "location" features of genes by applying regular expressions to dissect and transform the data into detailed components like Start Chromosome, Start Chromosome Arm, and specific locational markers. This detailed breakdown not only enhanced our data granularity but also enabled a more profound exploration of gene distribution across chromosomes. It significantly improved our ability to analyze and predict potential associations between specific genes and diseases, providing valuable insights into the genetic factors influencing disease mechanisms. Gene Location Data Transformation:
 
 
 <div align="center">
@@ -132,21 +125,20 @@ We explored various Graph Neural Network (GNN) models to identify the most effec
 
 These models were carefully evaluated to understand their efficacy in encoding the complex relationships in gene-disease interaction data, aiming to maximize both predictive accuracy and model interpretability.
 
-#### Training Pipeline
-Visualized the training pipeline in an image to depict the interaction of different GNN components and their flow in our model training process.
+#### Training Pipeline Overview
+
+The training pipeline begins with the extraction and enhancement of disease and gene features from the Stanford Bio-Database using natural language models like ChatGPT and BioClinicalBERT. These models preprocess the raw data, enriching it with additional medical insights and preparing it for integration into a Knowledge Graph (KG). This preprocessing step is critical as it ensures the data is normalized and enriched with relevant biomedical context, which enhances the accuracy and effectiveness of subsequent analyses.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/692346bd-aa43-44e8-8633-2cbf9c0560dd" alt="Pipeline" height="550px" />
+</p>
+
+After preprocessing, the enriched data feeds into a Graph Neural Network (GNN), which models the complex relationships between genes and diseases as a network of nodes (representing genes and diseases) and edges (representing their associations). Although not originally designed for biological data, the GNN effectively adapts to such datasets, leveraging its capacity to learn from the graph structure. This capability allows the GNN to perform deep learning-based predictions of potential links, known as link prediction. This process not only predicts new, plausible gene-disease associations but also enhances our understanding of the underlying biological processes, contributing to research in genomic medicine and personalized treatments.
 
 
 
 
 
-
-### Implementation Details
-
-We experimented with various Graph Neural Network (GNN) architectures to identify the most effective model for predicting gene-disease relationships, including the exploration of BERT-based models for medical contexts. The process involved:
-
-- **Model Architecture Selection**: Testing different GNN models like **GATv2Conv**, **GCNConv**, and **SAGEConv** to evaluate their performance based on the characteristics of our dataset.
-- **Training Process Adaptation**: Establishing a flexible training loop to optimize the performance of various GNN models under varying conditions.
-- **Technical Stack**: Utilizing the PyTorch framework and PyTorch Geometric for implementing and testing the GNN models.
 
 
 
