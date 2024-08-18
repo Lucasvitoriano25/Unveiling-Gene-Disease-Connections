@@ -1,5 +1,10 @@
 # Deep Learning for Genetic Analysis: A Graph Neural Network Approach for Biological Knowledge Graphs
 
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/c53586ee-3b78-4c8c-8bf4-1950e2894c6a" alt="Deep Learning for Genetic Analysis: A Graph Neural Network Approach for Biological Knowledge Graphs" height="400px" />
+</p>
+
 This study explores the use of Graph Neural Networks (GNNs) for identifying gene-disease associations through a Knowledge Graph derived from the Stanford Biomedical Network Dataset Collection, which includes over 21,000 connections. By representing genes and diseases as nodes, and their relationships as edges, we enable GNNs to uncover complex patterns and predict novel associations. This approach not only reveals previously unknown gene-disease links but also offers fresh insights into the molecular basis of diseases.
 
 ## Authors
