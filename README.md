@@ -71,12 +71,18 @@ Graph Neural Networks (GNNs) represent a cutting-edge class of deep learning mod
 
 ## Our Approach
 
-### Preprocessing
+### Preprocessing the Dataset
 
-The preprocessing stage involved refining the Stanford Biomedical Network Dataset Collection into a consistent and robust Knowledge Graph. This included:
+#### Disease Feature Standardization
+- Harmonized disease identifiers across datasets with differing IDs and naming conventions.
+- Excluded diseases lacking comprehensive information on definitions, categories, and synonyms.
 
-- **Disease Feature Standardization**: Aligning disease identifiers across datasets to ensure accurate disease matching.
-- **Disease Feature Augmentation**: Using OpenAI's GPT API to generate additional disease features. The prompt used was:
+#### Disease Feature Augmentation with LLMs
+- Utilized OpenAI's GPT API, specifically GPT 3.5 Turbo, to generate contextualized disease information.
+- Extracted additional features in JSON format focusing on main symptoms, risk factors, disease classes, and main systems affected.
+- Relied on existing definitions to guide the model for accuracy, minimizing data hallucination.
+
+The augmentation prompt was:
 
 ```text
 The {disease} has the following definition: {definition}
@@ -87,12 +93,16 @@ Based on your available knowledge and in the definition provided, give me inform
   "disease class": "",
   "main system affected": ""
 }
-Go straight to the point: only list the important terms in the JSON format.
+Go straight to the point: only list the important terms and don't talk too much.
 ```
 
-- **Gene Feature Enhancement**: Enhancing gene data by parsing chromosomal location details to aid in more detailed gene-disease analysis.
+#### Gene Feature Enhancement: Key Topics
+- Addressed challenges in analyzing gene "location" features.
+- Applied regular expressions to dissect "location" information into granular components such as Start Chromosome, Start Chromosome Arm, and locational markers.
+- Enhanced data exploration enabled detailed analysis of gene distribution and potential disease associations.
 
-The tables showcase the refinement of gene location information:
+Gene Location Data Transformation:
+
 
 <div align="center">
 
@@ -107,6 +117,26 @@ The tables showcase the refinement of gene location information:
 | End SubLoc       | 5q14.2-q14.3   | 3             |
 
 </div>
+
+### Implementation Details
+
+#### Model Architecture Selection: A Comparative Overview
+
+We explored various Graph Neural Network (GNN) models to identify the most effective architecture for our dataset. Here's a summary of the architectures considered:
+
+- **SAGEConv (GraphSAGE)**: Utilizes a sampling-based approach for neighbor aggregation, which is effective in large graphs by reducing computational load and memory usage, although it risks missing important neighbors which can affect learning outcomes.
+
+- **GCNConv (Graph Convolutional Network)**: Employs a spectral method for neighbor information aggregation, offering good generalization across different graph structures but may face challenges with highly irregular connectivity patterns.
+
+- **GATv2Conv (Graph Attention Network V2)**: Improves upon the original GAT model by using dynamic attention mechanisms to adjust the model’s focus based on graph structure, enhancing the ability to capture complex node interdependencies at the cost of increased computational demand.
+
+These models were carefully evaluated to understand their efficacy in encoding the complex relationships in gene-disease interaction data, aiming to maximize both predictive accuracy and model interpretability.
+
+#### Training Pipeline
+Visualized the training pipeline in an image to depict the interaction of different GNN components and their flow in our model training process.
+
+
+
 
 
 
