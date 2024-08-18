@@ -69,16 +69,16 @@ Graph Neural Networks (GNNs) represent a cutting-edge class of deep learning mod
   <img src="https://github.com/user-attachments/assets/2a112039-d4a3-474d-b955-c907e90289f5" alt="GNN" height="350px" />
 </p>
 
-## Our Approach
 
-### Preprocessing the Dataset
+## Preprocessing the Dataset
 
 #### Disease Feature Standardization
 - Harmonized disease identifiers across datasets with differing IDs and naming conventions.
 - Excluded diseases lacking comprehensive information on definitions, categories, and synonyms.
 
 #### Disease Feature Augmentation with LLMs
-We leveraged the capabilities of OpenAI's GPT 3.5 Turbo to generate contextualized information on diseases. This process allowed us to enrich our dataset by extracting additional features in JSON format, such as main symptoms, risk factors, disease classes, and main systems affected. By relying on existing definitions to guide the generation process, we aimed to ensure the accuracy of the information and minimize the risk of generating incorrect data. The augmentation prompt was:
+
+We leveraged the capabilities of OpenAI's GPT 3.5 Turbo [2] to generate contextualized information on diseases. This process allowed us to enrich our dataset by extracting additional features in JSON format, such as main symptoms, risk factors, disease classes, and main systems affected. By relying on existing definitions to guide the generation process, we aimed to ensure the accuracy of the information and minimize the risk of generating incorrect data. The augmentation prompt was:
 
 ```text
 The {disease} has the following definition: {definition}
@@ -92,9 +92,11 @@ Based on your available knowledge and in the definition provided, give me inform
 Go straight to the point: only list the important terms in the JSON format above.
 ```
 
-#### Gene Feature Enhancement: Key Topics
+After this preprocessing with GPT 3.5 Turbo[2] to enrich the dataset with contextualized disease information, we utilize BioClinicalBERT[3] to generate embeddings for the text data. These embeddings, which encode complex biomedical information into numerical form, serve as input features for the Graph Neural Network (GNN). By transforming rich textual descriptions into a format understandable by machine learning models, BioClinicalBERT[3] ensures that the GNN can effectively integrate and leverage semantic insights from the disease and gene descriptions. This step is crucial for enhancing the model's ability to discern and predict nuanced relationships within the biomedical data, contributing to the accuracy of the link predictions made by the GNN.
 
-We addressed significant challenges in analyzing the "location" features of genes by applying regular expressions to dissect and transform the data into detailed components like Start Chromosome, Start Chromosome Arm, and specific locational markers. This detailed breakdown not only enhanced our data granularity but also enabled a more profound exploration of gene distribution across chromosomes. It significantly improved our ability to analyze and predict potential associations between specific genes and diseases, providing valuable insights into the genetic factors influencing disease mechanisms. Gene Location Data Transformation:
+#### Gene Feature Enhancement
+
+We addressed significant challenges in analyzing the "location" features of genes (position of the gene in the human chromosome sequence)) by applying regular expressions to dissect and transform the data into detailed components like Start Chromosome, Start Chromosome Arm, and specific locational markers. This detailed breakdown not only enhanced our data granularity but also enabled a more profound exploration of gene distribution across chromosomes. It significantly improved our ability to analyze and predict potential associations between specific genes and diseases, providing valuable insights into the genetic factors influencing disease mechanisms. Gene Location Data Transformation:
 
 
 <div align="center">
@@ -136,16 +138,12 @@ The training pipeline begins with the extraction and enhancement of disease and 
 After preprocessing, the enriched data feeds into a Graph Neural Network (GNN), which models the complex relationships between genes and diseases as a network of nodes (representing genes and diseases) and edges (representing their associations). Although not originally designed for biological data, the GNN effectively adapts to such datasets, leveraging its capacity to learn from the graph structure. This capability allows the GNN to perform deep learning-based predictions of potential links, known as link prediction. This process not only predicts new, plausible gene-disease associations but also enhances our understanding of the underlying biological processes, contributing to research in genomic medicine and personalized treatments.
 
 
-
-
-
-
-
-
-
 ### References
 
 [1] Sagar Maheshwari Marinka Zitnik, Rok Sosic and Jure Leskovec. BioSNAP Datasets: Stanford biomedical network dataset collection. [http://snap.stanford.edu/biodata](http://snap.stanford.edu/biodata), August 2018
+[2] OpenAI. 2022. "Introducing ChatGPT." Accessed 2023. [https://openai.com/blog/chatgpt](https://openai.com/blog/chatgpt).
+[3] Emily Alsentzer, John R. Murphy, Willie Boag, Wei-Hung Weng, Di Jin, Tristan Naumann, and Matthew B. A. McDermott. 2019. "Publicly Available Clinical BERT Embeddings." Accessed [Year]. [https://arxiv.org/abs/1904.03323](https://arxiv.org/abs/1904.03323).
+
 
 
 ## Authors
