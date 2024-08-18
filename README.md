@@ -1,7 +1,11 @@
 # Deep Learning for Genetic Analysis: A Graph Neural Network Approach for Biological Knowledge Graphs
-[Training Data Download](https://drive.google.com/uc?export=download&id=1UxNXfc8ZvkP6F3M54cXbXpBRA_s-krJ4) | [Original Data](https://snap.stanford.edu/biodata/)
 
+This study explores the use of Graph Neural Networks (GNNs) for identifying gene-disease associations through a Knowledge Graph derived from the Stanford Biomedical Network Dataset Collection, which includes over 21,000 connections. By representing genes and diseases as nodes, and their relationships as edges, we enable GNNs to uncover complex patterns and predict novel associations. This approach not only reveals previously unknown gene-disease links but also offers fresh insights into the molecular basis of diseases.
 
+## Authors
+- Lucas Jose Veloso, CentraleSupelec, `lucasjose.velosodesouza@student-cs.fr`
+- Lucas Vitoriano, CentraleSupelec, `lucasvitoriano.queirozlira@student-cs.fr`
+- Joao Pedro Volpi, CentraleSupelec, `joao-pedro.monteiro-volpi@student-cs.fr`
 
 ## Introduction
 The intersection of genetics and disease pathology represents a critical area of biomedical research, with the potential to significantly advance our understanding of disease mechanisms and inform the development of targeted therapies. The Stanford Biomedical Network Dataset Collection provides a comprehensive resource for exploring this intersection, offering detailed datasets on gene-disease associations, disease classifications, and gene annotations. This work utilizes Graph Neural Networks (GNNs) to delve into the intricate relationships captured within these datasets and the _Knowledge Graph_ we constructed from them. Our primary focus is on the disease-gene association network, aiming to perform **Knowledge Graph Completion**. Through this process, we strive to discover new connections between diseases and genes, enriching our understanding of their relationships.
@@ -16,9 +20,13 @@ This study aims to harness the disease-gene association network dataset, contain
   <img src="https://github.com/user-attachments/assets/532bdfca-4c5b-4ebc-a88a-27f52032ca27" alt="SNAP Logo" height="200px" />
 </p>
 
+
 The **[Stanford Biomedical Network Dataset Collection](http://snap.stanford.edu/biodata)**[1] encompasses a rich compilation of biomedical datasets, containing information of drugs, proteins, cells, tissues, etc. We will focus on gene-disease connections. This section elaborates on the composition of the disease and gene datasets within the collection.
 
 ### Disease Datasets
+
+[Training Data Download](https://drive.google.com/uc?export=download&id=1UxNXfc8ZvkP6F3M54cXbXpBRA_s-krJ4) | [Original Data](https://snap.stanford.edu/biodata/)
+
 The disease datasets are comprehensive, incorporating disease names, definitions, synonyms, and mappings to disease categories. These datasets serve as a fundamental resource for understanding the molecular basis and classification of various diseases:
 
 - **Disease Descriptions and Synonyms**: Derived from the Disease Ontology, this dataset (1.7MB, `D-DoMiner_miner-diseaseDOID`) contains detailed descriptions and features of diseases. It is an essential tool for annotating disease-related information with standardized ontology terms.
@@ -119,11 +127,11 @@ We addressed significant challenges in analyzing the "location" features of gene
 
 We explored various Graph Neural Network (GNN) models to identify the most effective architecture for our dataset. Here's a summary of the architectures considered:
 
-- **SAGEConv (GraphSAGE)**: Utilizes a sampling-based approach for neighbor aggregation, which is effective in large graphs by reducing computational load and memory usage, although it risks missing important neighbors which can affect learning outcomes.
+- **SAGEConv (GraphSAGE)**[4]: Utilizes a sampling-based approach for neighbor aggregation, which is effective in large graphs by reducing computational load and memory usage, although it risks missing important neighbors which can affect learning outcomes.
 
-- **GCNConv (Graph Convolutional Network)**: Employs a spectral method for neighbor information aggregation, offering good generalization across different graph structures but may face challenges with highly irregular connectivity patterns.
+- **GCNConv (Graph Convolutional Network)**[5]: Employs a spectral method for neighbor information aggregation, offering good generalization across different graph structures but may face challenges with highly irregular connectivity patterns.
 
-- **GATv2Conv (Graph Attention Network V2)**: Improves upon the original GAT model by using dynamic attention mechanisms to adjust the model’s focus based on graph structure, enhancing the ability to capture complex node interdependencies at the cost of increased computational demand.
+- **GATv2Conv (Graph Attention Network V2)**[6]: Improves upon the original GAT model by using dynamic attention mechanisms to adjust the model’s focus based on graph structure, enhancing the ability to capture complex node interdependencies at the cost of increased computational demand.
 
 These models were carefully evaluated to understand their efficacy in encoding the complex relationships in gene-disease interaction data, aiming to maximize both predictive accuracy and model interpretability.
 
@@ -144,22 +152,16 @@ After preprocessing, the enriched data feeds into a Graph Neural Network (GNN), 
 
 [2] OpenAI. 2022. "Introducing ChatGPT." Accessed 2023. [https://openai.com/blog/chatgpt](https://openai.com/blog/chatgpt).
 
-[3] Emily Alsentzer, John R. Murphy, Willie Boag, Wei-Hung Weng, Di Jin, Tristan Naumann, and Matthew B. A. McDermott. 2019. "Publicly Available Clinical BERT Embeddings." Accessed [Year]. [https://arxiv.org/abs/1904.03323](https://arxiv.org/abs/1904.03323).
+[3] Emily Alsentzer, John R. Murphy, Willie Boag, Wei-Hung Weng, Di Jin, Tristan Naumann, and Matthew B. A. McDermott. 2019. "Publicly Available Clinical BERT Embeddings." [https://arxiv.org/abs/1904.03323](https://arxiv.org/abs/1904.03323).
+
+[4] William L. Hamilton, Rex Ying, and Jure Leskovec. "Inductive Representation Learning on Large Graphs",September 2018. arXiv:1706.02216 [cs, stat]
+
+[5] Thomas N. Kipf and Max Welling. "Semi-Supervised Classification with Graph Convolutional Networks", February 2017. arXiv:1609.02907 [cs, stat].
+
+[6] Shaked Brody, Uri Alon, and Eran Yahav. "How Attentive are Graph Attention Networks?", January 2022. arXiv:2105.14491 [cs].
 
 
 
-## Authors
-- Joao Pedro Volpi, CentraleSupelec, `joao-pedro.monteiro-volpi@student-cs.fr`
-- Lucas Vitoriano, CentraleSupelec, `lucasvitoriano.queirozlira@student-cs.fr`
-- Lucas Jose Veloso, CentraleSupelec, `lucasjose.velosodesouza@student-cs.fr`
-
-## Approach
-This study explores the use of Graph Neural Networks (GNNs) for identifying gene-disease associations through a Knowledge Graph derived from the Stanford Biomedical Network Dataset Collection, which includes over 21,000 connections. By representing genes and diseases as nodes, and their relationships as edges, we enable GNNs to uncover complex patterns and predict novel associations. This approach not only reveals previously unknown gene-disease links but also offers fresh insights into the molecular basis of diseases.
-
-## Knowledge graph representation 
-
-![Graph](https://github.com/Lucasvitoriano25/Unveiling-Gene-Disease-Connections/assets/52925699/1d0770f4-9905-4ed1-ace9-a05ed093bcc5)
-The image depicts several instances from our knowledge graph, illustrating the critical challenge we address in this work. Specifically, we focus on utilizing the existing relations (highlighted in orange) and attributes within our incomplete knowledge graph to predict possible missing relationships (indicated in pink) between genes and diseases.
 
 ## Results
 
