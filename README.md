@@ -113,9 +113,9 @@ We addressed significant challenges in analyzing the "location" features of gene
 
 </div>
 
-### Implementation Details
+## Implementation Details
 
-#### Model Architecture Selection: A Comparative Overview
+### Model Architecture Selection: A Comparative Overview
 
 We explored various Graph Neural Network (GNN) models to identify the most effective architecture for our dataset. Here's a summary of the architectures considered:
 
@@ -127,7 +127,7 @@ We explored various Graph Neural Network (GNN) models to identify the most effec
 
 These models were carefully evaluated to understand their efficacy in encoding the complex relationships in gene-disease interaction data, aiming to maximize both predictive accuracy and model interpretability.
 
-#### Training Pipeline Overview
+### Training Pipeline Overview
 
 The training pipeline begins with the extraction and enhancement of disease and gene features from the Stanford Bio-Database using natural language models like ChatGPT and BioClinicalBERT. These models preprocess the raw data, enriching it with additional medical insights and preparing it for integration into a Knowledge Graph (KG). This preprocessing step is critical as it ensures the data is normalized and enriched with relevant biomedical context, which enhances the accuracy and effectiveness of subsequent analyses.
 
@@ -138,10 +138,12 @@ The training pipeline begins with the extraction and enhancement of disease and 
 After preprocessing, the enriched data feeds into a Graph Neural Network (GNN), which models the complex relationships between genes and diseases as a network of nodes (representing genes and diseases) and edges (representing their associations). Although not originally designed for biological data, the GNN effectively adapts to such datasets, leveraging its capacity to learn from the graph structure. This capability allows the GNN to perform deep learning-based predictions of potential links, known as link prediction. This process not only predicts new, plausible gene-disease associations but also enhances our understanding of the underlying biological processes, contributing to research in genomic medicine and personalized treatments.
 
 
-### References
+## References
 
 [1] Sagar Maheshwari Marinka Zitnik, Rok Sosic and Jure Leskovec. BioSNAP Datasets: Stanford biomedical network dataset collection. [http://snap.stanford.edu/biodata](http://snap.stanford.edu/biodata), August 2018
+
 [2] OpenAI. 2022. "Introducing ChatGPT." Accessed 2023. [https://openai.com/blog/chatgpt](https://openai.com/blog/chatgpt).
+
 [3] Emily Alsentzer, John R. Murphy, Willie Boag, Wei-Hung Weng, Di Jin, Tristan Naumann, and Matthew B. A. McDermott. 2019. "Publicly Available Clinical BERT Embeddings." Accessed [Year]. [https://arxiv.org/abs/1904.03323](https://arxiv.org/abs/1904.03323).
 
 
