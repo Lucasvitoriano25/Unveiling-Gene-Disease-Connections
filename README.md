@@ -12,6 +12,33 @@ This study explores the use of Graph Neural Networks (GNNs) for identifying gene
 - Lucas Vitoriano, CentraleSupelec, `lucasvitoriano.queirozlira@student-cs.fr`
 - Joao Pedro Volpi, CentraleSupelec, `joao-pedro.monteiro-volpi@student-cs.fr`
 
+## Table of Contents
+- [Deep Learning for Genetic Analysis: A Graph Neural Network Approach for Biological Knowledge Graphs](#deep-learning-for-genetic-analysis-a-graph-neural-network-approach-for-biological-knowledge-graphs)
+  - [Authors](#authors)
+  - [Introduction](#introduction)
+  - [The Dataset](#the-dataset)
+    - [Disease Datasets](#disease-datasets)
+    - [Gene Datasets](#gene-datasets)
+    - [Disease-gene Association Network](#disease-gene-association-network)
+      - [Dataset Statistics](#dataset-statistics)
+  - [Modeling as a Knowledge Graph](#modeling-as-a-knowledge-graph)
+    - [Defining Classes](#defining-classes)
+    - [Specifying Properties](#specifying-properties)
+    - [Instantiating Individuals](#instantiating-individuals)
+  - [Graph Neural Networks (GNN)](#graph-neural-networks-gnn)
+  - [Preprocessing the Dataset](#preprocessing-the-dataset)
+    - [Disease Feature Standardization](#disease-feature-standardization)
+    - [Disease Feature Augmentation with LLMs](#disease-feature-augmentation-with-llms)
+    - [Gene Feature Enhancement](#gene-feature-enhancement)
+  - [Implementation Details](#implementation-details)
+    - [Model Architecture Selection: A Comparative Overview](#model-architecture-selection-a-comparative-overview)
+    - [Training Pipeline Overview](#training-pipeline-overview)
+  - [Results](#results)
+  - [Limitations](#limitations)
+  - [Conclusion](#conclusion)
+  - [References](#references)
+
+
 ## Introduction
 The intersection of genetics and disease pathology represents a critical area of biomedical research, with the potential to significantly advance our understanding of disease mechanisms and inform the development of targeted therapies. The Stanford Biomedical Network Dataset Collection provides a comprehensive resource for exploring this intersection, offering detailed datasets on gene-disease associations, disease classifications, and gene annotations. This work utilizes Graph Neural Networks (GNNs) to delve into the intricate relationships captured within these datasets and the _Knowledge Graph_ we constructed from them. Our primary focus is on the disease-gene association network, aiming to perform **Knowledge Graph Completion**. Through this process, we strive to discover new connections between diseases and genes, enriching our understanding of their relationships.
 
