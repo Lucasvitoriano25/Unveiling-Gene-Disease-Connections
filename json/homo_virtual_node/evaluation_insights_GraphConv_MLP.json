@@ -1,0 +1,23 @@
+{
+    "gnn_architecture": "GraphConv+MLP",
+    "experiment_configuration": {
+        "homogenous": true,
+        "virtual_node": true,
+        "use_augmented_features": true
+    },
+    "best_hyperparameters": {
+        "hidden_layer": 128,
+        "dropout": 0.3338728105493606,
+        "lr": 0.0022138581505210934,
+        "weight_decay": 0.0001999831240018197,
+        "num_hidden_layers_mlp": 2,
+        "num_blocks": 2
+    },
+    "evaluation_metrics": {
+        "accuracy": 0.9354686764013189,
+        "f1_score": 0.959812261660311,
+        "auc_roc": 0.9707942212299528,
+        "auc_pr": 0.9918422853481321
+    },
+    "model_path": "/content/drive/MyDrive/Projects/GNN-Gene-Disease/models/best_GraphConv_MLP/GNN_best_epoch_304_valAUCPR_0.9914.pth"
+}

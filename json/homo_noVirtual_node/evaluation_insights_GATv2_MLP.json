@@ -1,0 +1,23 @@
+{
+    "gnn_architecture": "GATv2+MLP",
+    "experiment_configuration": {
+        "homogenous": true,
+        "virtual_node": false,
+        "use_augmented_features": true
+    },
+    "best_hyperparameters": {
+        "hidden_layer": 1,
+        "dropout": 0.2,
+        "lr": 0.0001,
+        "weight_decay": 1e-05,
+        "num_hidden_layers_mlp": 0,
+        "heads": 2
+    },
+    "evaluation_metrics": {
+        "accuracy": 0.18543046357615894,
+        "f1_score": 0.0,
+        "auc_roc": 0.846798780487805,
+        "auc_pr": 0.9433948401149248
+    },
+    "model_path": "/content/drive/MyDrive/Projects/GNN-Gene-Disease/models/best_GATv2_MLP/GNN_best_epoch_447_valAUCPR_0.7491.pth"
+}

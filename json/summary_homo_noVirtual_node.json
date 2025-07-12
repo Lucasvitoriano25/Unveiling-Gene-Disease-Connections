@@ -1,0 +1,41 @@
+{
+    "GATv2+MLP":{
+        "Best Epoch (by Val AUC-PR)":493,
+        "Val AUC-PR":0.9184049191,
+        "Val AUC":0.9225297855,
+        "Val F1":0.7243902439,
+        "Val P@10":1.0,
+        "Val Acc":0.7703252033,
+        "Val Loss":2.4776739329,
+        "Val TP":594,
+        "Val TN":922,
+        "Val FP":62,
+        "Val FN":390
+    },
+    "GraphConv+MLP":{
+        "Best Epoch (by Val AUC-PR)":4,
+        "Val AUC-PR":0.9794796918,
+        "Val AUC":0.9820021771,
+        "Val F1":0.929969104,
+        "Val P@10":1.0,
+        "Val Acc":0.9308943089,
+        "Val Loss":0.1814929117,
+        "Val TP":903,
+        "Val TN":929,
+        "Val FP":55,
+        "Val FN":81
+    },
+    "SAGEConv+MLP":{
+        "Best Epoch (by Val AUC-PR)":108,
+        "Val AUC-PR":0.9675807513,
+        "Val AUC":0.9830013963,
+        "Val F1":0.1287878788,
+        "Val P@10":1.0,
+        "Val Acc":0.5325203252,
+        "Val Loss":3.4002703733,
+        "Val TP":68,
+        "Val TN":980,
+        "Val FP":4,
+        "Val FN":916
+    }
+}

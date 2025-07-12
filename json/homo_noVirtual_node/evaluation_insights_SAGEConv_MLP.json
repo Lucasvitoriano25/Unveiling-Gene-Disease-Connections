@@ -1,0 +1,22 @@
+{
+    "gnn_architecture": "SAGEConv+MLP",
+    "experiment_configuration": {
+        "homogenous": true,
+        "virtual_node": false,
+        "use_augmented_features": true
+    },
+    "best_hyperparameters": {
+        "hidden_layer": 1,
+        "dropout": 0.2,
+        "lr": 0.0001,
+        "weight_decay": 1e-05,
+        "num_hidden_layers_mlp": 0
+    },
+    "evaluation_metrics": {
+        "accuracy": 0.8336092715231788,
+        "f1_score": 0.8952579468473163,
+        "auc_roc": 0.8102202199477351,
+        "auc_pr": 0.9299578633480153
+    },
+    "model_path": "/content/drive/MyDrive/Projects/GNN-Gene-Disease/models/best_SAGEConv_MLP/GNN_best_epoch_493_valAUCPR_0.8286.pth"
+}
